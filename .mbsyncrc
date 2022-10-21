@@ -1,0 +1,316 @@
+# ============================
+# = idone.leonardo@gmail.com =
+# ============================
+IMAPAccount idone-dot-leonardo
+Host imap.gmail.com
+User idone.leonardo@gmail.com
+SSLType IMAPS
+PassCmd "secret-tool lookup Title 'idone.leonardo app-password'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore idone-dot-leonardo-remote
+Account idone-dot-leonardo
+
+MaildirStore idone-dot-leonardo-local
+Path ~/.mail/idone-dot-leonardo/
+Inbox ~/.mail/idone-dot-leonardo/Inbox
+SubFolders Verbatim
+
+# GMAIL Folders
+# * LIST (\HasNoChildren)            "/" "INBOX"
+# * LIST (\HasChildren \Noselect)    "/" "[Gmail]"
+# * LIST (\All \HasNoChildren)       "/" "[Gmail]/All Mail"
+# * LIST (\Drafts \HasNoChildren)    "/" "[Gmail]/Drafts"
+# * LIST (\HasNoChildren \Important) "/" "[Gmail]/Important"
+# * LIST (\HasNoChildren \Sent)      "/" "[Gmail]/Sent Mail"
+# * LIST (\HasNoChildren \Junk)      "/" "[Gmail]/Spam"
+# * LIST (\Flagged \HasNoChildren)   "/" "[Gmail]/Starred"
+# * LIST (\HasNoChildren \Trash)     "/" "[Gmail]/Trash"
+
+Channel idone-dot-leonardo-inbox
+Far :idone-dot-leonardo-remote:
+Near :idone-dot-leonardo-local:
+Patterns "INBOX"
+Expunge Both
+
+Channel idone-dot-leonardo-sent
+Far :idone-dot-leonardo-remote:"[Gmail]/Sent Mail"
+Near :idone-dot-leonardo-local:sent
+Create Near
+Expunge Both
+
+Channel idone-dot-leonardo-trash
+Far :idone-dot-leonardo-remote:"[Gmail]/Trash"
+Near :idone-dot-leonardo-local:trash
+Create Near
+Expunge Both
+
+Channel idone-dot-leonardo-spam
+Far :idone-dot-leonardo-remote:"[Gmail]/Spam"
+Near :idone-dot-leonardo-local:spam
+Create Near
+Expunge Both
+
+Group idone-dot-leonardo
+Channel idone-dot-leonardo-inbox
+Channel idone-dot-leonardo-sent
+Channel idone-dot-leonardo-trash
+Channel idone-dot-leonardo-spam
+
+# =====================
+# = abubu55@gmail.com =
+# =====================
+IMAPAccount abubu55
+Host imap.gmail.com
+User abubu55@gmail.com
+SSLType IMAPS
+PassCmd "secret-tool lookup Title 'abubu55 app-password'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore abubu55-remote
+Account abubu55
+
+MaildirStore abubu55-local
+Path ~/.mail/abubu55/
+Inbox ~/.mail/abubu55/Inbox
+SubFolders Verbatim
+
+Channel abubu55-inbox
+Far :abubu55-remote:
+Near :abubu55-local:
+Patterns "INBOX"
+Expunge Both
+
+# GMAIL Folders
+# * LIST (\HasNoChildren)            "/" "INBOX"
+# * LIST (\HasChildren \Noselect)    "/" "[Gmail]"
+# * LIST (\All \HasNoChildren)       "/" "[Gmail]/All Mail"
+# * LIST (\Drafts \HasNoChildren)    "/" "[Gmail]/Drafts"
+# * LIST (\HasNoChildren \Important) "/" "[Gmail]/Important"
+# * LIST (\HasNoChildren \Sent)      "/" "[Gmail]/Sent Mail"
+# * LIST (\HasNoChildren \Junk)      "/" "[Gmail]/Spam"
+# * LIST (\Flagged \HasNoChildren)   "/" "[Gmail]/Starred"
+# * LIST (\HasNoChildren \Trash)     "/" "[Gmail]/Trash"
+
+Channel abubu55-sent
+Far :abubu55-remote:"[Gmail]/Sent Mail"
+Near :abubu55-local:sent
+Create Near
+Expunge Both
+
+Channel abubu55-trash
+Far :abubu55-remote:"[Gmail]/Trash"
+Near :abubu55-local:trash
+Create Near
+Expunge Both
+
+Channel abubu55-spam
+Far :abubu55-remote:"[Gmail]/Spam"
+Near :abubu55-local:spam
+Create Near
+Expunge Both
+
+Group abubu55
+Channel abubu55-inbox
+Channel abubu55-sent
+Channel abubu55-trash
+Channel abubu55-spam
+
+# ==============================
+# = leo.idone@stud.uniroma3.it =
+# ==============================
+#IMAPAccount leo-dot-idone
+#Host outlook.office365.com
+#User leo.idone@stud.uniroma3.it
+#SSLType IMAPS
+#PassCmd "secret-tool lookup Title GOMP"
+#CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.stud.uniroma3.it.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+#IMAPStore leo-dot-idone-remote
+#Account leo-dot-idone
+
+#MaildirStore leo-dot-idone-local
+#Path ~/.mail/leo-dot-idone/
+#Inbox ~/.mail/leo-dot-idone/Inbox
+#SubFolders Verbatim
+
+# OUTLOOK folders
+# * LIST (\HasNoChildren)         "/" Archive
+# * LIST (\HasNoChildren)         "/" Calendar
+# * LIST (\HasChildren)           "/" Contacts
+# * LIST (\HasChildren)           "/" "Conversation History"
+# * LIST (\HasNoChildren \Trash)  "/" "Deleted Items"
+# * LIST (\HasNoChildren \Drafts) "/" Drafts
+# * LIST (\Marked \HasNoChildren) "/" INBOX
+# * LIST (\HasNoChildren)         "/" Journal
+# * LIST (\HasNoChildren)         "/" Junk
+# * LIST (\HasNoChildren \Junk)   "/" "Junk Email"
+# * LIST (\HasNoChildren)         "/" Notes
+# * LIST (\HasNoChildren)         "/" Outbox
+# * LIST (\HasNoChildren)         "/" Queue
+# * LIST (\HasNoChildren)         "/" Sent
+# * LIST (\HasNoChildren \Sent)   "/" "Sent Items"
+# * LIST (\HasNoChildren)         "/" Tasks
+# * LIST (\HasNoChildren)         "/" Trash
+
+#Channel leo-dot-idone-inbox
+#Far :leo-dot-idone-remote:
+#Near :leo-dot-idone-local:
+#Patterns "INBOX"
+#Expunge Both
+
+#Channel leo-dot-idone-sent
+#Far :leo-dot-idone-remote:"Sent Items"
+#Near :leo-dot-idone-local:sent
+#Create Near
+#Expunge Both
+
+#Channel leo-dot-idone-trash
+#Far :leo-dot-idone-remote:"Deleted Items"
+#Near :leo-dot-idone-local:trash
+#Create Near
+#Expunge Both
+
+#Channel leo-dot-idone-junk
+#Far :leo-dot-idone-remote:"Junk Email"
+#Near :leo-dot-idone-local:junk
+#Create Near
+#Expunge Both
+
+#Group leo-dot-idone
+#Channel leo-dot-idone-inbox
+#Channel leo-dot-idone-sent
+#Channel leo-dot-idone-trash
+#Channel leo-dot-idone-junk
+
+# ================================
+# = leonardo.idone@cool-tech.com =
+# ================================
+IMAPAccount leonardo-cool-tech
+Host imap.gmail.com
+User leonardo.idone@cool-tech.it
+SSLType IMAPS
+PassCmd "secret-tool lookup Title 'leonardo.idone@cool-tech.it app-password'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore leonardo-cool-tech-remote
+Account leonardo-cool-tech
+
+MaildirStore leonardo-cool-tech-local
+Path ~/.mail/leonardo-cool-tech/
+Inbox ~/.mail/leonardo-cool-tech/Inbox
+SubFolders Verbatim
+
+# GMAIL Folders
+# * LIST (\HasNoChildren)            "/" "INBOX"
+# * LIST (\HasChildren \Noselect)    "/" "[Gmail]"
+# * LIST (\All \HasNoChildren)       "/" "[Gmail]/All Mail"
+# * LIST (\Drafts \HasNoChildren)    "/" "[Gmail]/Drafts"
+# * LIST (\HasNoChildren \Important) "/" "[Gmail]/Important"
+# * LIST (\HasNoChildren \Sent)      "/" "[Gmail]/Sent Mail"
+# * LIST (\HasNoChildren \Junk)      "/" "[Gmail]/Spam"
+# * LIST (\Flagged \HasNoChildren)   "/" "[Gmail]/Starred"
+# * LIST (\HasNoChildren \Trash)     "/" "[Gmail]/Trash"
+
+Channel leonardo-cool-tech-inbox
+Far :leonardo-cool-tech-remote:
+Near :leonardo-cool-tech-local:
+Patterns "INBOX"
+Expunge Both
+
+
+# ====================================
+# = Queste commentate non funzionano =
+# ====================================
+#Channel leonardo-cool-tech-sent
+#Far :leonardo-cool-tech-remote:"[Gmail]/Sent Mail"
+#Near :leonardo-cool-tech-local:sent
+#Create Near
+#Expunge Both
+
+#Channel leonardo-cool-tech-trash
+#Far :leonardo-cool-tech-remote:"[Gmail]/Trash"
+#Near :leonardo-cool-tech-local:trash
+#Create Near
+#Expunge Both
+
+Channel leonardo-cool-tech-spam
+Far :leonardo-cool-tech-remote:"[Gmail]/Spam"
+Near :leonardo-cool-tech-local:spam
+Create Near
+Expunge Both
+
+Group leonardo-cool-tech
+Channel leonardo-cool-tech-inbox
+Channel leonardo-cool-tech-sent
+Channel leonardo-cool-tech-trash
+Channel leonardo-cool-tech-spam
+
+# =========================
+# = leonardo.idone@pec.it =
+# =========================
+IMAPAccount leonardo-pec-aruba
+Host imaps.pec.aruba.it
+User leonardo.idone@pec.it
+SSLType IMAPS
+PassCmd "secret-tool lookup Title 'Aruba PEC Mail Personale'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore leonardo-pec-aruba-remote
+Account leonardo-pec-aruba
+
+MaildirStore leonardo-pec-aruba-local
+Path ~/.mail/leonardo-pec-aruba/
+Inbox ~/.mail/leonardo-pec-aruba/Inbox
+SubFolders Verbatim
+
+# GMAIL Folders
+# * LIST (\HasNoChildren)            "/" "INBOX"
+# * LIST (\HasChildren \Noselect)    "/" "[Gmail]"
+# * LIST (\All \HasNoChildren)       "/" "[Gmail]/All Mail"
+# * LIST (\Drafts \HasNoChildren)    "/" "[Gmail]/Drafts"
+# * LIST (\HasNoChildren \Important) "/" "[Gmail]/Important"
+# * LIST (\HasNoChildren \Sent)      "/" "[Gmail]/Sent Mail"
+# * LIST (\HasNoChildren \Junk)      "/" "[Gmail]/Spam"
+# * LIST (\Flagged \HasNoChildren)   "/" "[Gmail]/Starred"
+# * LIST (\HasNoChildren \Trash)     "/" "[Gmail]/Trash"
+
+Channel leonardo-pec-aruba-inbox
+Far :leonardo-pec-aruba-remote:
+Near :leonardo-pec-aruba-local:
+Patterns "INBOX"
+Expunge Both
+
+#Channel leonardo-pec-aruba-sent
+#Far :leonardo-pec-aruba-remote:"[Gmail]/Sent Mail"
+#Near :leonardo-pec-aruba-local:sent
+#Create Near
+#Expunge Both
+
+#Channel leonardo-pec-aruba-trash
+#Far :leonardo-pec-aruba-remote:"[Gmail]/Trash"
+#Near :leonardo-pec-aruba-local:trash
+#Create Near
+#Expunge Both
+
+#Channel leonardo-pec-aruba-spam
+#Far :leonardo-pec-aruba-remote:"[Gmail]/Spam"
+#Near :leonardo-pec-aruba-local:spam
+#Create Near
+#Expunge Both
+
+Group leonardo-pec-aruba
+Channel leonardo-pec-aruba-inbox
+#Channel leonardo-pec-aruba-sent
+#Channel leonardo-pec-aruba-trash
+#Channel leonardo-pec-aruba-spam
