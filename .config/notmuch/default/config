@@ -1,0 +1,21 @@
+# Note: 'backup_dir' need full path, the others are relative to $HOME
+#       it's better to leave the former unset
+[database]
+hook_dir=.config/notmuch/hooks
+mail_root=.mail
+path=.mail
+
+[maildir]
+synchronize_flags=true
+
+[new]
+ignore=.uidvalidity
+tags=unread;inbox;
+
+[search]
+exclude_tags=deleted;spam;
+
+[user]
+name=Leonardo Idone
+other_email=abubu55@gmail.com;leo.idone@stud.uniroma3.it;
+primary_email=idone.leonardo@gmail.com
