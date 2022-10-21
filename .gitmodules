@@ -1,0 +1,3 @@
+[submodule ".config/awesome/awesome-modalbind"]
+	path = .config/awesome/awesome-modalbind
+	url = https://github.com/crater2150/awesome-modalbind
